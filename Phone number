@@ -1,0 +1,59 @@
+"""Abdul and Numbers
+After school hours, Abdul helps his father at his scooter repair shop. Abdul is always intrigued
+with numbers and their sequence. Each time a customer leaves his/her phone number Abdul
+likes to find the max length of substring that can be formed with this phone number, without
+any number being repeated. Write a program for Abdul that takes a number and gives the max
+length of substring.
+Constraint: 3<=phone number<=10
+Note: if the length of phone number violates constraint, print -1
+
+Constraint:
+3<=phone number<=10
+Note: if length of phone number violates constraint, print -1
+sample
+1.  input = 1232345  (//enter phone number)
+    output = 4  
+2.  input = 89  (//enter phone number)
+    output = -1
+ """
+ 
+ Number=input()
+len1=len(Number)
+list1= []
+list2=[]
+if(len1>2 and len1 < 11):
+    for i in range(len1-1):
+        if (int(Number[i])+1) == int (Number[i+1]) :
+            if Number[i] not in list1 :
+                list1.append(Number[i])
+            list1.append(Number[i+1])
+        else:
+            for i in list1:
+                if i!="":
+                    list2.append(i)
+            list2.append(" ")
+            list1=['']
+    for i in list1:
+        if i!="":
+            list2.append(i)
+    list2.append(" ")
+    list1=['']
+    temp=[]
+    for i in list2:
+        if i == " ":
+            if len(temp)<len(list1):
+                temp=[""]
+            else:
+                list1=[""]
+                for i in temp:
+                    if i!="":
+                        list1.append(i)
+                temp=[""]
+        else:
+            if i != "":
+                temp.append(i)
+    for i in list1:
+        if i!="":
+            print(i,end="")
+else:
+    print(-1)
